@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import htwgwasgeht from "../assets/htwasgeht.jpg";
+import { Picture } from "astro:assets";
 ---
 
 <div>Hello!</div>
-<Image src={htwgwasgeht} alt="Ht Was Geht Logo" />
+<Picture src={import("../assets/htwasgeht.png")} formats={["webp", "png"]} alt="Ht Was Geht Logo" />

@@ -22,9 +22,9 @@ const notices = await getCollection("notices");
     url="https://studi-events.vercel.app"
   />
   <Header />
-  <PageContainer as="div">
+  <PageContainer as="div" size="xs">
     <main class="min-h-screen">
-      <div class="grid grid-cols-1 gap-2 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div class="grid grid-cols-1 gap-2 sm:gap-4">
         {notices.map((notice) => <NoticeCard notice={notice} />)}
       </div>
     </main>

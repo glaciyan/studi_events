@@ -1,7 +1,7 @@
 ---
 interface Props {
   as: string;
-  size: "xl" | "2xl" | "sm" | "full";
+  size: "xl" | "2xl" | "sm" | "full" | "xs";
   class: string;
 }
 
@@ -14,6 +14,9 @@ switch (size) {
     break;
   case "sm":
     screenSize = "max-w-screen-sm";
+    break;
+  case "xs":
+    screenSize = "max-w-96";
     break;
   case "full":
     screenSize = "";

@@ -1,4 +1,6 @@
 ---
+import { getCollection } from "astro:content";
+import NoticeCard from "~/components/NoticeCard.astro";
 import OpenGraphMeta from "~/components/OpenGraphMeta.astro";
 import Footer from "~/layouts/Footer.astro";
 import Header from "~/layouts/Header.astro";
@@ -7,6 +9,8 @@ import PageContainer from "~/layouts/PageContainer.astro";
 import version from "~/version";
 
 const title = "Studi Events";
+
+const notices = await getCollection("notices");
 ---
 
 <HtmlLayout title={title}>
@@ -20,7 +24,9 @@ const title = "Studi Events";
   <Header />
   <PageContainer as="div">
     <main class="min-h-screen">
-      <p class="dark:text-neutral-200">Hallo!</p>
+      <div class="grid grid-cols-1 gap-2 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {notices.map((notice) => <NoticeCard notice={notice} />)}
+      </div>
     </main>
   </PageContainer>
   <Footer version={version} />

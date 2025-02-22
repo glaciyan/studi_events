@@ -1,0 +1,64 @@
+---
+import { getImage, Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import Prose from "~/components/Prose.astro";
+
+interface Props {
+  notice: CollectionEntry<"notices">;
+}
+
+const { notice } = Astro.props;
+const { Content } = await render(notice);
+---
+
+<section
+  class="bg-neutral-100 dark:bg-stone-800 shadow-sm rounded-lg overflow-hidden border-neutral-400 dark:border-stone-700 border-1 col-span-1"
+>
+  {
+    notice.data.cover && (
+      <Image src={notice.data.cover.image} alt={notice.data.cover.alt} />
+    )
+  }
+  <div class="flex flex-col p-3">
+    <div class="mb-2">
+      <h1 class="text-black dark:text-white text-xl">{notice.data.title}</h1>
+      {
+        notice.data.subtitle && (
+          <h2 class="text-sm text-neutral-800 dark:text-neutral-400">
+            {notice.data.subtitle}
+          </h2>
+        )
+      }
+      {
+        notice.data.event_start && (
+          <span class="text-neutral-800 dark:text-neutral-400">
+            {notice.data.event_start.toLocaleDateString()}{" "}
+            {notice.data.event_start.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+          </span>
+        )
+      }
+      {
+        notice.data.event_end && (
+          <span class="text-neutral-800 dark:text-neutral-400">
+            - {notice.data.event_end.toLocaleDateString()}{" "}
+            {notice.data.event_end.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+          </span>
+        )
+      }
+    </div>
+    <Prose>
+      <Content />
+    </Prose>
+    <div class="flex flex-row flex-wrap gap-1 mt-4 opacity-80">
+        {notice.data.institution.map(i => {
+            switch (i) {
+                case "HTWG":
+                    return <span class="text-cyan-500 dark:text-cyan-300 font-bold text-sm bg-cyan-400/20 dark:bg-cyan-800/20 px-2 py-0.5 rounded-full border-1 border-cyan-500">HTWG</span>;
+                case "UNI":
+                    return <span class="text-blue-500 dark:text-blue-400 font-bold text-sm bg-blue-400/30 dark:bg-blue-800/30 px-2 py-0.5 rounded-full border-1 border-blue-500">UNI</span>;
+            }
+        })}
+    </div>
+  </div>
+</section>

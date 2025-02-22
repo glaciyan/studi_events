@@ -2,6 +2,7 @@
 import FooterSection from "~/components/FooterSection.astro";
 import PageContainer from "./PageContainer.astro";
 import LogoWithText from "~/components/LogoWithText.astro";
+import NeutralLink from "~/components/NeutralLink.astro";
 
 interface Props {
   version: string;
@@ -14,17 +15,14 @@ const { version } = Astro.props;
   <PageContainer class="py-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12">
       <FooterSection title="Links">
-        <a
-          href="https://chat.whatsapp.com/DzliJ4YpifB8FUaiKDDHl8"
-          class="dark:text-neutral-300">Whatsapp Gruppe</a
+        <NeutralLink href="https://chat.whatsapp.com/DzliJ4YpifB8FUaiKDDHl8"
+          >Whatsapp Gruppe</NeutralLink
         >
-        <a
-          href="https://chat.whatsapp.com/KvKQ6NYLftXIcBy73G1vok"
-          class="dark:text-neutral-300">Mensabot HTWG</a
+        <NeutralLink href="https://chat.whatsapp.com/KvKQ6NYLftXIcBy73G1vok"
+          >Mensabot HTWG</NeutralLink
         >
-        <a
-          href="https://chat.whatsapp.com/KygjUCEcIflDVsGdReD05e"
-          class="dark:text-neutral-300">Mensabot UNI</a
+        <NeutralLink href="https://chat.whatsapp.com/KygjUCEcIflDVsGdReD05e"
+          >Mensabot UNI</NeutralLink
         >
       </FooterSection>
     </div>

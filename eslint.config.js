@@ -1,21 +1,10 @@
 import vuePlugin from "eslint-plugin-vue";
-import vueTsConfig from "@vue/eslint-config-typescript";
-import stylistic from "@stylistic/eslint-plugin";
+import { defineConfigWithVueTs } from "@vue/eslint-config-typescript";
 import eslintPluginAstro from "eslint-plugin-astro";
 
-export default [
-  ...vuePlugin.configs["flat/recommended"],
-  ...vueTsConfig(),
-  ...eslintPluginAstro.configs.recommended,
-  stylistic.configs.customize({
-    // the following options are the default values
-    indent: 2,
-    quotes: "double",
-    semi: true,
-    "max-len": {
-      code: 120,
-    },
-  }),
+export default defineConfigWithVueTs(
+  vuePlugin.configs["flat/recommended"],
+  eslintPluginAstro.configs.recommended,
   {
     rules: {
       // Vue specific rules
@@ -37,7 +26,7 @@ export default [
       "vue/multi-word-component-names": [
         "error",
         {
-          ignores: ["Center", "Modal", "Builds", "Index", "Search"],
+          ignores: [],
         },
       ],
 
@@ -54,10 +43,11 @@ export default [
       ],
       "@typescript-eslint/no-empty-object-type": ["off"],
       "@typescript-eslint/ban-ts-comment": ["off"],
+      "@stylistic/jsx-one-expression-per-line": ["off"],
 
       // Custom rules
       "no-debugger": "error",
-      semi: "warn",
+      semi: "off",
     },
-  },
-];
+  }
+);

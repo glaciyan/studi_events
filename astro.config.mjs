@@ -15,4 +15,9 @@ export default defineConfig({
   },
 
   adapter: vercel(),
+
+  i18n: {
+    locales: ["en", "de"],
+    defaultLocale: "de",
+  },
 });

@@ -1,11 +1,26 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
+import OpenGraphMeta from "~/components/OpenGraphMeta.astro";
+import Footer from "~/layouts/Footer.astro";
+import Header from "~/layouts/Header.astro";
+import HtmlLayout from "~/layouts/HtmlLayout.astro";
+import PageContainer from "~/layouts/PageContainer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = "Studi Events";
 ---
 
-<Layout>
-  <Welcome />
-</Layout>
+<HtmlLayout title={title}>
+  <OpenGraphMeta
+    slot="meta"
+    title={title}
+    description="Das Studierenden-Pinnwand - Deine zentrale Plattform für Events, News und wichtige Ankündigungen an der Uni und Hochschule."
+    image="/htwgasgeht.png"
+    url="https://studi-events.vercel.app"
+  />
+  <Header />
+  <PageContainer as="div">
+    <main class="min-h-screen">
+      <p class="dark:text-neutral-200">Hallo!</p>
+    </main>
+  </PageContainer>
+  <Footer version="0.0.1" />
+</HtmlLayout>

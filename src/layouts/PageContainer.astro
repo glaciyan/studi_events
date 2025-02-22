@@ -1,5 +1,28 @@
 ---
-const ContainerEl = "div";
+interface Props {
+  as: string;
+  size: "xl" | "2xl" | "sm" | "full";
+  class: string;
+}
+
+const { as, size, class: className } = Astro.props;
+const ContainerEl = as ?? "div";
+let screenSize: string;
+switch (size) {
+  case "2xl":
+    screenSize = "max-w-screen-2xl";
+    break;
+  case "sm":
+    screenSize = "max-w-screen-sm";
+    break;
+  case "full":
+    screenSize = "";
+    break;
+  default: // xl
+    screenSize = "max-w-screen-xl";
+    break;
+}
+const screenClass = `mx-auto px-6 ${screenSize}`;
 ---
 
-<ContainerEl><slot /></ContainerEl>
+<ContainerEl class:list={[screenClass, className]}><slot /></ContainerEl>

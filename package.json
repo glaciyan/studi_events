@@ -1,10 +1,12 @@
 {
   "name": "studi-events",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "pre": "npm run gen:version",
+    "gen:version": "node scripts/version.js",
+    "dev": "npm run pre && astro dev",
+    "build": "npm run pre && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "pnpm astro check --minimumFailingSeverity hint --minimumSeverity hint",

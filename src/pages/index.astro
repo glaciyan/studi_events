@@ -4,6 +4,7 @@ import Footer from "~/layouts/Footer.astro";
 import Header from "~/layouts/Header.astro";
 import HtmlLayout from "~/layouts/HtmlLayout.astro";
 import PageContainer from "~/layouts/PageContainer.astro";
+import version from "~/version";
 
 const title = "Studi Events";
 ---
@@ -22,5 +23,5 @@ const title = "Studi Events";
       <p class="dark:text-neutral-200">Hallo!</p>
     </main>
   </PageContainer>
-  <Footer version="0.0.1" />
+  <Footer version={version} />
 </HtmlLayout>

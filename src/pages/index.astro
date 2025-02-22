@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import NoticeCard from "~/components/NoticeCard.astro";
 import OpenGraphMeta from "~/components/OpenGraphMeta.astro";
@@ -11,6 +12,8 @@ import version from "~/version";
 const title = "Studi Events";
 
 const notices = await getCollection("notices");
+
+const heroImage = await getImage({src: import("~/assets/htwasgeht.png"), format: "jpeg"});
 ---
 
 <HtmlLayout title={title}>
@@ -18,7 +21,7 @@ const notices = await getCollection("notices");
     slot="meta"
     title={title}
     description="Das Studierenden-Pinnwand - Deine zentrale Plattform für Events, News und wichtige Ankündigungen an der Uni und Hochschule."
-    image="/htwgasgeht.png"
+    image={"https://studi-events.vercel.app" + heroImage.src}
     url="https://studi-events.vercel.app"
   />
   <Header />
